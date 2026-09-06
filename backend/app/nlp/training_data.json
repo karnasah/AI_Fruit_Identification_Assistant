@@ -1,0 +1,230 @@
+{
+  "version": "1.0",
+  "intents": [
+    {
+      "name": "greeting",
+      "examples": [
+        "hello",
+        "hi",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "namaste",
+        "howdy",
+        "greetings",
+        "hi there",
+        "hello there",
+        "hey there"
+      ],
+      "responses": [
+        "Hello! How can I help you with fruits today? 🍎",
+        "Hi there! I'm your Fruit AI Assistant. Ask me anything about fruits! 🍌",
+        "Welcome! Ready to explore the world of fruits? Ask away! 🍊",
+        "Hey! Need help identifying a fruit or learning about nutrition? I'm here! 🥭"
+      ]
+    },
+    {
+      "name": "goodbye",
+      "examples": [
+        "bye",
+        "goodbye",
+        "see you",
+        "take care",
+        "exit",
+        "quit",
+        "see you later",
+        "talk to you later",
+        "have a good day",
+        "bye bye"
+      ],
+      "responses": [
+        "Goodbye! Come back if you have more fruit questions! 👋",
+        "See you later! Happy fruit exploring! 🍎",
+        "Take care! Remember to eat your fruits daily! 🍌",
+        "Bye! Feel free to return anytime! 🍊"
+      ]
+    },
+    {
+      "name": "fruit_identification",
+      "examples": [
+        "identify this fruit",
+        "what fruit is this",
+        "can you recognize this fruit",
+        "tell me what fruit this is",
+        "name this fruit",
+        "is this an apple",
+        "what fruit am I looking at",
+        "identify fruit from image",
+        "help me identify this fruit"
+      ],
+      "responses": [
+        "I can help identify fruits! Just upload a photo or use your camera in the Identify section. 📸",
+        "To identify a fruit, go to the Identify page and upload an image. I'll tell you what fruit it is! 🍎",
+        "You can identify fruits by uploading an image or using live camera. The AI will analyze it instantly! 🎯"
+      ]
+    },
+    {
+      "name": "nutrition_info",
+      "examples": [
+        "tell me about nutrition",
+        "how many calories",
+        "what vitamins does it have",
+        "is this fruit healthy",
+        "nutrition facts",
+        "health benefits of",
+        "benefits of eating",
+        "is it good for health",
+        "nutritional value"
+      ],
+      "responses": [
+        "I can provide detailed nutritional information! Which fruit are you interested in? 🥗",
+        "Nutrition info includes calories, vitamins, minerals, and health benefits. Tell me the fruit name! 📊",
+        "Fruits are packed with nutrients! Ask me about a specific fruit for detailed nutrition facts. 💪"
+      ]
+    },
+    {
+      "name": "seasonal_info",
+      "examples": [
+        "when is it in season",
+        "what fruits are in season now",
+        "seasonal fruits",
+        "peak season for",
+        "best time to buy",
+        "harvest season",
+        "available in which season",
+        "summer fruits",
+        "winter fruits"
+      ],
+      "responses": [
+        "Seasonal fruits vary by region and time of year. Which fruit or season are you curious about? 📅",
+        "Fruits taste best when they're in season! Tell me a fruit name to learn its peak season. 🌸",
+        "Summer fruits include mangoes and watermelons. Winter brings oranges and pomegranates! What would you like to know? 🍂"
+      ]
+    },
+    {
+      "name": "storage_tips",
+      "examples": [
+        "how to store",
+        "storage tips",
+        "how to keep fresh",
+        "shelf life",
+        "refrigerate or not",
+        "how to preserve",
+        "keep it fresh",
+        "storage guidelines"
+      ],
+      "responses": [
+        "Proper storage keeps fruits fresh longer! Which fruit do you need storage tips for? 📦",
+        "Some fruits ripen at room temperature, others need refrigeration. Ask me about specific fruits! 🧊",
+        "Store bananas separate from other fruits - they release ethylene gas that speeds ripening! 🍌"
+      ]
+    },
+    {
+      "name": "recipe_suggestion",
+      "examples": [
+        "recipe ideas",
+        "what can I make with",
+        "cooking with",
+        "fruit recipes",
+        "smoothie recipe",
+        "fruit salad recipe",
+        "dessert with",
+        "how to cook"
+      ],
+      "responses": [
+        "I love sharing recipes! Which fruit would you like to cook with? 🍳",
+        "Smoothies, salads, desserts - so many options! Tell me your favorite fruit for recipe ideas! 👩‍🍳",
+        "From fruit salads to baked desserts, I've got recipes. What fruit are you using? 🥗"
+      ]
+    },
+    {
+      "name": "farming_tips",
+      "examples": [
+        "how to grow",
+        "farming tips",
+        "planting",
+        "cultivation",
+        "growing fruit",
+        "orchard care",
+        "harvesting tips",
+        "farmer help"
+      ],
+      "responses": [
+        "Growing fruits requires proper soil, water, and care. Which fruit are you planning to grow? 🌱",
+        "I can provide farming tips for various fruits. Let me know which fruit you're interested in! 🚜",
+        "Proper pruning, irrigation, and pest control are key for fruit farming. Need specific advice? 🌾"
+      ]
+    },
+    {
+      "name": "price_info",
+      "examples": [
+        "price of",
+        "how much does it cost",
+        "market price",
+        "fruit rates",
+        "expensive or cheap",
+        "cost of",
+        "what is the price"
+      ],
+      "responses": [
+        "Fruit prices vary by season and location. Which fruit's price are you curious about? 💰",
+        "I can provide average market prices. Tell me the fruit name and your location! 🏪",
+        "Prices fluctuate with season - fruits are usually cheaper when in season! 📈"
+      ]
+    },
+    {
+      "name": "ripeness_detection",
+      "examples": [
+        "how to know if ripe",
+        "check ripeness",
+        "when is it ripe",
+        "ripeness indicators",
+        "ripe or not",
+        "how to tell if ready",
+        "signs of ripeness"
+      ],
+      "responses": [
+        "Ripeness indicators vary by fruit! Which fruit would you like to check? 🥭",
+        "Color, texture, and smell can indicate ripeness. Tell me the fruit name for specific tips! 👃",
+        "A gentle squeeze often reveals ripeness! Ask me about a specific fruit for detailed guidance! 🍑"
+      ]
+    },
+    {
+      "name": "thanks",
+      "examples": [
+        "thank you",
+        "thanks",
+        "appreciate it",
+        "thanks a lot",
+        "thank you so much",
+        "helpful",
+        "great thanks"
+      ],
+      "responses": [
+        "You're welcome! Happy to help! 🍎",
+        "My pleasure! Anything else I can assist with? 😊",
+        "Glad I could help! Feel free to ask more questions! 🌟",
+        "Anytime! Come back if you need more fruit advice! 🍌"
+      ]
+    },
+    {
+      "name": "help",
+      "examples": [
+        "help",
+        "what can you do",
+        "capabilities",
+        "how to use",
+        "features",
+        "tell me about yourself",
+        "what do you do",
+        "guide me"
+      ],
+      "responses": [
+        "I can help you identify fruits, provide nutritional info, suggest recipes, give storage tips, and more! 🍎",
+        "Try asking: 'What fruits are in season?' or 'Tell me about apple nutrition' or 'How to identify a ripe mango?' 🤖",
+        "Features: Fruit identification, nutrition database, seasonal info, recipe suggestions, and farming tips! 📚"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+# ========================================
+# Development Dependencies
+# For local development and testing
+# ========================================
+
+# Install with: pip install -r requirements_dev.txt
+
+# First install production requirements
+# pip install -r requirements.txt
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-xdist==3.5.0
+httpx==0.25.1
+
+# Code Quality
+black==23.11.0
+flake8==6.1.0
+isort==5.12.0
+mypy==1.7.0
+pylint==3.0.2
+
+# Debugging
+ipython==8.17.2
+ipdb==0.13.13
+
+# Database Tools
+alembic==1.12.1
+psql==1.1.1
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.4.8
+
+# Performance Monitoring
+line-profiler==4.1.1
+memory-profiler==0.61.0
+
+# Pre-commit Hooks
+pre-commit==3.5.0
+
+# Load Testing
+locust==2.20.0
+
+# Environment Management
+python-dotenv==1.0.0
+
+argon2-cffi==23.1.0

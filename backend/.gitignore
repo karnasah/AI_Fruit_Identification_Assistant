@@ -1,0 +1,126 @@
+# ========================================
+# Python
+# ========================================
+
+# Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# ========================================
+# Project Specific
+# ========================================
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Static files
+static/uploads/
+static/temp/
+static/exports/
+static/avatars/
+
+# ML Models (large files)
+app/ml/models/*.h5
+app/ml/models/*.tflite
+app/ml/models/*.weights
+!app/ml/models/class_labels.json
+
+# ML Training outputs
+ml_workspace/datasets/
+ml_workspace/models/
+ml_workspace/notebooks/.ipynb_checkpoints/
+
+# Redis dump
+dump.rdb
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# MkDocs documentation
+site/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Profiling data
+.prof
+*.prof
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
