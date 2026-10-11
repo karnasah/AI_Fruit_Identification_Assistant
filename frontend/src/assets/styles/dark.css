@@ -1,0 +1,444 @@
+/**
+ * Dark Theme Styles
+ * Dark mode styling for the Fruit AI Assistant application
+ */
+
+/* ========================================
+   Dark Theme Variables
+   ======================================== */
+
+.dark {
+  /* Colors - Dark Theme */
+  --color-primary-50: #311905;
+  --color-primary-100: #62320a;
+  --color-primary-200: #934b0f;
+  --color-primary-300: #c46414;
+  --color-primary-400: #f57d19;
+  --color-primary-500: #f79747;
+  --color-primary-600: #f9b175;
+  --color-primary-700: #fbcba3;
+  --color-primary-800: #fde5d1;
+  --color-primary-900: #fef3e8;
+  
+  --color-secondary-50: #051a06;
+  --color-secondary-100: #0a340c;
+  --color-secondary-200: #0f4e12;
+  --color-secondary-300: #146818;
+  --color-secondary-400: #19821e;
+  --color-secondary-500: #479b4b;
+  --color-secondary-600: #75b478;
+  --color-secondary-700: #a3cda5;
+  --color-secondary-800: #d1e6d2;
+  --color-secondary-900: #e8f5e9;
+  
+  --color-accent-50: #101933;
+  --color-accent-100: #203166;
+  --color-accent-200: #304a99;
+  --color-accent-300: #4062cc;
+  --color-accent-400: #507bff;
+  --color-accent-500: #7395ff;
+  --color-accent-600: #96b0ff;
+  --color-accent-700: #b9caff;
+  --color-accent-800: #dce5ff;
+  --color-accent-900: #eef2ff;
+  
+  /* Neutral Colors - Dark Theme */
+  --color-gray-50: #111827;
+  --color-gray-100: #1f2937;
+  --color-gray-200: #374151;
+  --color-gray-300: #4b5563;
+  --color-gray-400: #6b7280;
+  --color-gray-500: #9ca3af;
+  --color-gray-600: #d1d5db;
+  --color-gray-700: #e5e7eb;
+  --color-gray-800: #f3f4f6;
+  --color-gray-900: #f9fafb;
+  
+  /* Semantic Colors - Dark Theme */
+  --color-success: #34d399;
+  --color-error: #f87171;
+  --color-warning: #fbbf24;
+  --color-info: #60a5fa;
+  
+  /* Shadows - Dark Theme */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4);
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.2);
+  --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-hard: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   Dark Theme Base Styles
+   ======================================== */
+
+.dark body {
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-800);
+}
+
+/* ========================================
+   Dark Theme Card Styles
+   ======================================== */
+
+.dark .card {
+  background-color: var(--color-gray-100);
+  box-shadow: var(--shadow-soft);
+}
+
+.dark .card:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+/* ========================================
+   Dark Theme Form Styles
+   ======================================== */
+
+.dark .input {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-300);
+  color: var(--color-gray-800);
+}
+
+.dark .input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(247, 151, 71, 0.2);
+}
+
+.dark .input::placeholder {
+  color: var(--color-gray-500);
+}
+
+.dark .label {
+  color: var(--color-gray-700);
+}
+
+/* ========================================
+   Dark Theme Button Styles
+   ======================================== */
+
+.dark .btn-secondary {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-900);
+}
+
+.dark .btn-secondary:hover {
+  background-color: var(--color-gray-300);
+}
+
+.dark .btn-outline {
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-500);
+}
+
+.dark .btn-outline:hover {
+  background-color: var(--color-primary-500);
+  color: white;
+}
+
+/* ========================================
+   Dark Theme Modal Styles
+   ======================================== */
+
+.dark .modal-content {
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+}
+
+.dark .modal-header {
+  border-bottom-color: var(--color-gray-200);
+}
+
+.dark .modal-footer {
+  border-top-color: var(--color-gray-200);
+}
+
+/* ========================================
+   Dark Theme Dropdown Styles
+   ======================================== */
+
+.dark .dropdown {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-200);
+}
+
+.dark .dropdown-item {
+  color: var(--color-gray-700);
+}
+
+.dark .dropdown-item:hover {
+  background-color: var(--color-gray-200);
+}
+
+/* ========================================
+   Dark Theme Table Styles
+   ======================================== */
+
+.dark table thead {
+  background-color: var(--color-gray-200);
+}
+
+.dark table tbody tr {
+  border-bottom-color: var(--color-gray-200);
+}
+
+.dark table tbody tr:hover {
+  background-color: var(--color-gray-200);
+}
+
+/* ========================================
+   Dark Theme Scrollbar Styles
+   ======================================== */
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-primary-600);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-500);
+}
+
+/* ========================================
+   Dark Theme Selection Styles
+   ======================================== */
+
+.dark ::selection {
+  background-color: var(--color-primary-700);
+  color: var(--color-primary-100);
+}
+
+.dark ::-moz-selection {
+  background-color: var(--color-primary-700);
+  color: var(--color-primary-100);
+}
+
+/* ========================================
+   Dark Theme Toast/Notification Styles
+   ======================================== */
+
+.dark .toast {
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+
+.dark .toast-success {
+  background-color: rgba(52, 211, 153, 0.1);
+  border-color: var(--color-success);
+}
+
+.dark .toast-error {
+  background-color: rgba(248, 113, 113, 0.1);
+  border-color: var(--color-error);
+}
+
+.dark .toast-warning {
+  background-color: rgba(251, 191, 36, 0.1);
+  border-color: var(--color-warning);
+}
+
+.dark .toast-info {
+  background-color: rgba(96, 165, 250, 0.1);
+  border-color: var(--color-info);
+}
+
+/* ========================================
+   Dark Theme Chat Styles
+   ======================================== */
+
+.dark .chat-message-user {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+.dark .chat-message-bot {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+
+.dark .chat-input {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-300);
+  color: var(--color-gray-800);
+}
+
+/* ========================================
+   Dark Theme Sidebar Styles
+   ======================================== */
+
+.dark .sidebar {
+  background-color: var(--color-gray-100);
+  border-right-color: var(--color-gray-200);
+}
+
+.dark .sidebar-item {
+  color: var(--color-gray-700);
+}
+
+.dark .sidebar-item:hover {
+  background-color: var(--color-gray-200);
+}
+
+.dark .sidebar-item.active {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+/* ========================================
+   Dark Theme Loader Styles
+   ======================================== */
+
+.dark .loader {
+  border-color: var(--color-primary-800);
+  border-top-color: var(--color-primary-500);
+}
+
+/* ========================================
+   Dark Theme Skeleton Loader
+   ======================================== */
+
+.dark .skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-gray-200) 25%,
+    var(--color-gray-300) 50%,
+    var(--color-gray-200) 75%
+  );
+}
+
+/* ========================================
+   Dark Theme Code/Pre Styles
+   ======================================== */
+
+.dark code,
+.dark pre {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+
+/* ========================================
+   Dark Theme Tooltip Styles
+   ======================================== */
+
+.dark .tooltip {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+
+/* ========================================
+   Dark Theme Progress Bar
+   ======================================== */
+
+.dark .progress-bar {
+  background-color: var(--color-gray-200);
+}
+
+.dark .progress-bar-fill {
+  background-color: var(--color-primary-500);
+}
+
+/* ========================================
+   Dark Theme Badge Styles
+   ======================================== */
+
+.dark .badge {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+
+.dark .badge-primary {
+  background-color: var(--color-primary-600);
+  color: white;
+}
+
+.dark .badge-success {
+  background-color: rgba(52, 211, 153, 0.2);
+  color: var(--color-success);
+}
+
+.dark .badge-error {
+  background-color: rgba(248, 113, 113, 0.2);
+  color: var(--color-error);
+}
+
+.dark .badge-warning {
+  background-color: rgba(251, 191, 36, 0.2);
+  color: var(--color-warning);
+}
+
+/* ========================================
+   Dark Theme Tab Styles
+   ======================================== */
+
+.dark .tab {
+  color: var(--color-gray-600);
+}
+
+.dark .tab:hover {
+  color: var(--color-gray-700);
+}
+
+.dark .tab.active {
+  color: var(--color-primary-500);
+  border-bottom-color: var(--color-primary-500);
+}
+
+/* ========================================
+   Dark Theme Accordion Styles
+   ======================================== */
+
+.dark .accordion-item {
+  border-bottom-color: var(--color-gray-200);
+}
+
+.dark .accordion-header {
+  background-color: var(--color-gray-100);
+}
+
+.dark .accordion-header:hover {
+  background-color: var(--color-gray-200);
+}
+
+.dark .accordion-content {
+  background-color: var(--color-gray-100);
+}
+
+/* ========================================
+   Dark Theme Pagination Styles
+   ======================================== */
+
+.dark .pagination-item {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-200);
+  color: var(--color-gray-700);
+}
+
+.dark .pagination-item:hover {
+  background-color: var(--color-gray-200);
+}
+
+.dark .pagination-item.active {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  color: white;
+}
+
+/* ========================================
+   Dark Theme Transition for Theme Switch
+   ======================================== */
+
+.dark,
+.dark *,
+.dark *::before,
+.dark *::after {
+  transition: background-color 0.3s ease,
+              border-color 0.3s ease,
+              color 0.2s ease,
+              box-shadow 0.3s ease;
+}

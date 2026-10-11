@@ -1,0 +1,16 @@
+.venv/
+**/.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+logs/
+**/logs/
+*.log
+node_modules/
+**/node_modules/
+dist/
+build/
+ml_workspace/datasets/
+ml_workspace/**/datasets/

@@ -1,0 +1,626 @@
+/**
+ * Responsive Styles
+ * Mobile-first responsive design for the Fruit AI Assistant application
+ */
+
+/* ========================================
+   Mobile Styles (Default - < 640px)
+   ======================================== */
+
+/* Typography - Mobile */
+body {
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+/* Layout - Mobile */
+.container-custom {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Grid - Mobile */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid-cols-2,
+.grid-cols-3,
+.grid-cols-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cards - Mobile */
+.card {
+  padding: 16px;
+}
+
+/* Buttons - Mobile */
+.btn {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Forms - Mobile */
+.input,
+textarea,
+select {
+  padding: 10px 14px;
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Modal - Mobile */
+.modal {
+  width: 90%;
+  margin: 20px auto;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* Navigation - Mobile */
+.navbar {
+  padding: 12px 16px;
+}
+
+.navbar-links {
+  display: none;
+}
+
+.navbar-links.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar-toggle {
+  display: block;
+}
+
+/* Sidebar - Mobile */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+  z-index: 1050;
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+  display: none;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Table - Mobile */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  min-width: 600px;
+}
+
+/* Stats Cards - Mobile */
+.stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-card {
+  padding: 16px;
+}
+
+/* Chart Containers - Mobile */
+.chart-container {
+  height: 250px;
+}
+
+/* Footer - Mobile */
+.footer {
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ========================================
+   Tablet Styles (640px - 768px)
+   ======================================== */
+
+@media (min-width: 640px) {
+  /* Typography - Tablet */
+  body {
+    font-size: 15px;
+  }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+  
+  /* Layout - Tablet */
+  .container-custom {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  
+  /* Grid - Tablet */
+  .grid {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .grid-cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  /* Buttons - Tablet */
+  .btn {
+    width: auto;
+    padding: 10px 24px;
+  }
+  
+  .btn-group {
+    flex-direction: row;
+    gap: 12px;
+  }
+  
+  /* Cards - Tablet */
+  .card {
+    padding: 20px;
+  }
+  
+  /* Stats Cards - Tablet */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  /* Modal - Tablet */
+  .modal {
+    width: 500px;
+    margin: 40px auto;
+  }
+  
+  /* Chart Containers - Tablet */
+  .chart-container {
+    height: 300px;
+  }
+  
+  /* Footer - Tablet */
+  .footer {
+    text-align: left;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+/* ========================================
+   Desktop Styles (768px - 1024px)
+   ======================================== */
+
+@media (min-width: 768px) {
+  /* Typography - Desktop */
+  body {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 36px;
+  }
+  
+  h2 {
+    font-size: 30px;
+  }
+  
+  h3 {
+    font-size: 24px;
+  }
+  
+  /* Layout - Desktop */
+  .container-custom {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  
+  /* Grid - Desktop */
+  .grid-cols-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .grid-cols-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  
+  /* Navigation - Desktop */
+  .navbar-links {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .navbar-toggle {
+    display: none;
+  }
+  
+  /* Sidebar - Desktop */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+    left: 0;
+    width: auto;
+    height: auto;
+  }
+  
+  .sidebar-overlay {
+    display: none !important;
+  }
+  
+  /* Stats Cards - Desktop */
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
+  /* Modal - Desktop */
+  .modal {
+    width: 600px;
+  }
+  
+  /* Chart Containers - Desktop */
+  .chart-container {
+    height: 350px;
+  }
+  
+  /* Footer - Desktop */
+  .footer-content {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+}
+
+/* ========================================
+   Large Desktop Styles (1024px+)
+   ======================================== */
+
+@media (min-width: 1024px) {
+  /* Typography - Large Desktop */
+  h1 {
+    font-size: 42px;
+  }
+  
+  h2 {
+    font-size: 36px;
+  }
+  
+  h3 {
+    font-size: 28px;
+  }
+  
+  /* Layout - Large Desktop */
+  .container-custom {
+    padding-left: 48px;
+    padding-right: 48px;
+    max-width: 1280px;
+  }
+  
+  /* Grid - Large Desktop */
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  
+  /* Cards - Large Desktop */
+  .card {
+    padding: 24px;
+  }
+  
+  /* Modal - Large Desktop */
+  .modal {
+    width: 700px;
+  }
+  
+  /* Chart Containers - Large Desktop */
+  .chart-container {
+    height: 400px;
+  }
+}
+
+/* ========================================
+   Extra Large Desktop Styles (1280px+)
+   ======================================== */
+
+@media (min-width: 1280px) {
+  /* Typography - XL Desktop */
+  h1 {
+    font-size: 48px;
+  }
+  
+  h2 {
+    font-size: 40px;
+  }
+  
+  /* Layout - XL Desktop */
+  .container-custom {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+  
+  /* Grid - XL Desktop */
+  .grid-cols-4 {
+    gap: 32px;
+  }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+  /* Hide non-essential elements when printing */
+  .navbar,
+  .footer,
+  .sidebar,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+  
+  /* Ensure content is readable */
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+  }
+  
+  .container-custom {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+  }
+  
+  /* Show URLs for links */
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+  
+  /* Ensure images fit on page */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+  
+  /* Avoid page breaks inside certain elements */
+  .card,
+  .identification-result {
+    page-break-inside: avoid;
+  }
+}
+
+/* ========================================
+   Accessibility - Reduced Motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   Accessibility - High Contrast
+   ======================================== */
+
+.high-contrast {
+  --color-primary-500: #ff6600;
+  --color-primary-600: #cc5200;
+  --color-secondary-500: #00cc00;
+  --color-text: #000000;
+  --color-background: #ffffff;
+}
+
+.high-contrast.dark {
+  --color-text: #ffffff;
+  --color-background: #000000;
+}
+
+/* ========================================
+   Landscape Orientation
+   ======================================== */
+
+@media (orientation: landscape) and (max-height: 600px) {
+  .modal {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .sidebar {
+    overflow-y: auto;
+  }
+}
+
+/* ========================================
+   Touch Device Optimizations
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for buttons */
+  .btn,
+  .clickable,
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .btn:hover,
+  .card:hover {
+    transform: none;
+  }
+  
+  /* Increase spacing for touch */
+  .menu-item,
+  .nav-item {
+    padding: 12px 16px;
+  }
+}
+
+/* ========================================
+   Dark Mode Responsive Adjustments
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .navbar-links.active {
+    background-color: var(--color-gray-900);
+  }
+}
+
+/* ========================================
+   Loading States - Responsive
+   ======================================== */
+
+@media (max-width: 640px) {
+  .skeleton-card {
+    height: 200px;
+  }
+  
+  .skeleton-text {
+    height: 16px;
+  }
+  
+  .skeleton-title {
+    height: 24px;
+  }
+}
+
+@media (min-width: 640px) {
+  .skeleton-card {
+    height: 250px;
+  }
+}
+
+/* ========================================
+   Utility Classes - Responsive
+   ======================================== */
+
+/* Hide on mobile */
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hide-mobile {
+    display: block;
+  }
+}
+
+/* Hide on desktop */
+.hide-desktop {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* Text alignment responsive */
+.text-center-mobile {
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .text-center-mobile {
+    text-align: left;
+  }
+}
+
+/* Flex direction responsive */
+.flex-column-mobile {
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .flex-column-mobile {
+    flex-direction: row;
+  }
+}

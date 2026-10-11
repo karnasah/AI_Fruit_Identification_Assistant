@@ -11,7 +11,8 @@ from datetime import datetime
 import cv2
 from PIL import Image
 
-from app.core.config import settings
+from app.core.config import BACKEND_DIR, settings
+from app.utils.fruit_labels import clean_fruit_label
 from app.utils.logger import logger
 
 
@@ -38,20 +39,25 @@ class MLService:
             import tensorflow as tf
             
             # Load fruit classifier
-            if os.path.exists(settings.ML_MODEL_PATH):
-                self.model = tf.keras.models.load_model(settings.ML_MODEL_PATH)
-                logger.info(f"Loaded fruit classifier from {settings.ML_MODEL_PATH}")
+            model_path = settings.ML_MODEL_PATH
+            if not os.path.isabs(model_path):
+                model_path = os.path.join(BACKEND_DIR, model_path)
+            model_path = os.path.abspath(model_path)
+
+            if os.path.exists(model_path) and os.path.getsize(model_path) > 0:
+                self.model = tf.keras.models.load_model(model_path)
+                logger.info("Model loaded: path=%s input_shape=%s", model_path, self.model.input_shape)
             else:
-                logger.warning(f"Fruit classifier not found at {settings.ML_MODEL_PATH}")
+                logger.error("Model unavailable: path=%s exists=%s size=%s", model_path, os.path.exists(model_path), os.path.getsize(model_path) if os.path.exists(model_path) else 0)
             
             # Load class labels
-            labels_path = os.path.join(os.path.dirname(settings.ML_MODEL_PATH), "class_labels.json")
+            labels_path = os.path.join(os.path.dirname(model_path), "class_labels.json")
             if os.path.exists(labels_path):
                 with open(labels_path, 'r') as f:
                     self.labels = json.load(f)
                 logger.info(f"Loaded {len(self.labels)} class labels")
             
-            self.is_loaded = True
+            self.is_loaded = self.model is not None and self.labels is not None
             
         except Exception as e:
             logger.error(f"Failed to load ML models: {e}")
@@ -63,15 +69,15 @@ class MLService:
         img = cv2.imread(image_path)
         if img is None:
             img = np.array(Image.open(image_path))
-        
-        # Convert BGR to RGB
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        else:
+            # OpenCV loads images as BGR; PIL fallback already returns RGB.
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         
         # Resize
         img = cv2.resize(img, target_size)
         
         # Normalize
-        img = img / 255.0
+        img = img.astype(np.float32) / 255.0
         
         # Add batch dimension
         img = np.expand_dims(img, axis=0)
@@ -88,8 +94,7 @@ class MLService:
         Returns:
             Dictionary with identification results
         """
-        if not self.is_loaded or settings.MOCK_ML_MODEL:
-            # Return mock result for testing
+        if settings.MOCK_ML_MODEL:
             return {
                 "fruit_name": "Apple",
                 "confidence": 0.96,
@@ -100,44 +105,78 @@ class MLService:
                 ],
                 "ripeness": "ripe",
             }
+
+        if not self.is_loaded or self.model is None or self.labels is None:
+            raise RuntimeError("Fruit classifier is not loaded; refusing to return a mock prediction")
         
         try:
             # Preprocess image
             processed_img = self._preprocess_image(image_path)
+            logger.info("Image processed: path=%s shape=%s", image_path, processed_img.shape)
             
             # Run inference
             predictions = self.model.predict(processed_img)
-            predicted_class = int(np.argmax(predictions[0]))
-            confidence = float(np.max(predictions[0]))
+            prediction_vector = np.asarray(predictions[0])
+            expected_classes = int(self.model.output_shape[-1])
+            if prediction_vector.ndim != 1 or prediction_vector.shape[0] != expected_classes:
+                raise RuntimeError(
+                    f"Unexpected prediction shape: {prediction_vector.shape}; expected ({expected_classes},)"
+                )
+            if len(self.labels) != expected_classes:
+                raise RuntimeError(
+                    f"Class label count {len(self.labels)} does not match model output size {expected_classes}"
+                )
+
+            predicted_class = int(np.argmax(prediction_vector))
+            confidence = float(prediction_vector[predicted_class])
+            top_indices = np.argsort(prediction_vector)[-10:][::-1]
+            logger.info(
+                "Prediction diagnostics: image_shape=%s min=%.8f max=%.8f vector_shape=%s top10=%s",
+                processed_img.shape,
+                float(processed_img.min()),
+                float(processed_img.max()),
+                prediction_vector.shape,
+                [
+                    (
+                        int(idx),
+                        clean_fruit_label(self.labels.get(str(int(idx)), f"Class_{idx}")),
+                        float(prediction_vector[idx]),
+                    )
+                    for idx in top_indices
+                ],
+            )
             
             # Get fruit name
-            fruit_name = self.labels.get(str(predicted_class), f"Class_{predicted_class}") if self.labels else f"Class_{predicted_class}"
+            fruit_name = clean_fruit_label(
+                self.labels.get(str(predicted_class), f"Class_{predicted_class}")
+                if self.labels
+                else f"Class_{predicted_class}"
+            )
             
             # Get top 3 predictions
-            top_indices = np.argsort(predictions[0])[-3:][::-1]
+            top_indices = top_indices[:3]
             top_predictions = []
             for idx in top_indices:
-                name = self.labels.get(str(idx), f"Class_{idx}") if self.labels else f"Class_{idx}"
+                name = clean_fruit_label(
+                    self.labels.get(str(idx), f"Class_{idx}") if self.labels else f"Class_{idx}"
+                )
                 top_predictions.append({
                     "name": name,
-                    "confidence": float(predictions[0][idx]),
+                    "confidence": float(prediction_vector[idx]),
                 })
             
-            return {
+            result = {
                 "fruit_name": fruit_name,
                 "confidence": confidence,
                 "top_predictions": top_predictions,
                 "ripeness": "ripe",
             }
+            logger.info("Prediction generated: fruit=%s confidence=%.4f", fruit_name, confidence)
+            return result
             
         except Exception as e:
             logger.error(f"Fruit identification error: {e}")
-            return {
-                "fruit_name": "Unknown",
-                "confidence": 0.0,
-                "top_predictions": [],
-                "error": str(e),
-            }
+            raise
     
     async def detect_multiple_fruits(self, image_path: str) -> List[Dict[str, Any]]:
         """Detect multiple fruits in a single image"""

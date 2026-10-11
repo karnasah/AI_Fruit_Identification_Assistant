@@ -10,6 +10,7 @@ from typing import Dict, Any, List, Optional, Tuple
 
 from app.ml.preprocessing.image_processor import ImageProcessor
 from app.core.config import settings
+from app.utils.fruit_labels import clean_fruit_label
 from app.utils.logger import logger
 
 
@@ -126,7 +127,7 @@ class FruitClassifier:
     def _get_fruit_name(self, class_idx: int) -> str:
         """Get fruit name from class index"""
         if self.labels and str(class_idx) in self.labels:
-            return self.labels[str(class_idx)]
+            return clean_fruit_label(self.labels[str(class_idx)])
         return f"Class_{class_idx}"
     
     def _mock_predict(self, image_path: str) -> Dict[str, Any]:

@@ -1,0 +1,196 @@
+# ========================================
+# AI Fruit Identification Assistant
+# Frontend Git Ignore File
+# ========================================
+
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Testing
+/coverage
+/.nyc_output
+/.jest-cache
+/.cache
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+
+# Production builds
+/build
+/dist
+/.next
+/out
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.project
+.classpath
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+*.swp
+*.swo
+*~
+.~lock.*
+*.orig
+
+# Temporary files
+/tmp
+/temp
+*.tmp
+*.temp
+
+# Logs
+/logs
+*.log
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+*.DS_Store
+
+# Package manager lock files (optional - keep one)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Bundle analysis
+/webpack-stats.json
+/webpack-stats-evil.json
+/.stats
+/stats.html
+
+# Performance monitoring
+.perf
+.perf.json
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build output
+storybook-static
+
+# rollup.js default build output
+dist/
+
+# gatsby files
+.cache
+public
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless/
+
+# FuseBox cache
+.fusebox/
+
+# DynamoDB Local files
+.dynamodb/
+
+# TernJS port file
+.tern-port
+
+# Stores VSCode versions used for testing
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# PWA workbox files
+sw.js
+workbox-*.js
+
+# Screenshots
+screenshots/
+*.png
+*.jpg
+*.jpeg
+
+# User uploaded images (local dev)
+public/uploads/
+src/assets/uploads/

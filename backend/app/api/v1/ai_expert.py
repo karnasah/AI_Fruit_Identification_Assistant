@@ -17,7 +17,7 @@ async def expert_analysis(
     image: UploadFile = File(...),
     analysis_types: Optional[str] = Form(None),
 ):
-    """Identify the fruit locally, then request expert analysis from Gemini."""
+    """Send the uploaded image directly to the external analysis service."""
     logger.info(
         "AI expert request received: filename=%s content_type=%s analysis_types=%s",
         image.filename,
@@ -34,9 +34,6 @@ async def expert_analysis(
     try:
         image_bytes = await image.read()
         logger.info("AI expert image read: bytes=%d", len(image_bytes))
-        image.file.seek(0)
-        image_path = await file_service.save_temp_file(image)
-        logger.info("AI expert temporary image saved: path=%s", image_path)
         try:
             requested = json.loads(analysis_types) if analysis_types else []
             if not isinstance(requested, list) or not all(isinstance(item, str) for item in requested):
@@ -46,12 +43,14 @@ async def expert_analysis(
                 image_bytes=image_bytes,
                 mime_type=image.content_type,
                 analysis_types=requested,
-                image_path=image_path,
             )
         finally:
-            await file_service.delete_temp_file(image_path)
+            image.file.close()
     except HTTPException:
         raise
     except Exception as exc:
-        logger.error("AI expert analysis error: type=%s", type(exc).__name__)
-        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="AI expert analysis failed.") from exc
+        logger.exception("AI expert analysis error")
+        raise HTTPException(
+            status_code=status.HTTP_502_BAD_GATEWAY,
+            detail=f"External AI analysis failed: {exc}",
+        ) from exc

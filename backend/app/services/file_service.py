@@ -122,6 +122,17 @@ class FileService:
         
         logger.info(f"Uploaded image saved: {file_path}")
         return file_path
+
+    async def persist_image(self, temp_path: str, user_id: int) -> str:
+        """Move a processed identification image into the user's storage."""
+        user_dir = os.path.join(settings.UPLOAD_DIR, str(user_id))
+        Path(user_dir).mkdir(parents=True, exist_ok=True)
+
+        filename = self._generate_filename(os.path.basename(temp_path), "identification")
+        file_path = os.path.join(user_dir, filename)
+        shutil.move(temp_path, file_path)
+        logger.info("Identification image persisted: path=%s", file_path)
+        return f"/static/uploads/{user_id}/{filename}"
     
     async def save_avatar(self, file: UploadFile, user_id: int) -> str:
         """

@@ -5,8 +5,12 @@ Loads environment variables and provides configuration settings
 
 from typing import List, Optional
 from functools import lru_cache
+from pathlib import Path
 from pydantic_settings import BaseSettings
 from pydantic import ConfigDict, Field
+
+
+BACKEND_DIR = Path(__file__).resolve().parents[2]
 
 
 class Settings(BaseSettings):
@@ -96,9 +100,10 @@ class Settings(BaseSettings):
     DEMO_MODE: bool = Field(default=False, alias="DEMO_MODE")
     SEED_DATABASE: bool = Field(default=True, alias="SEED_DATABASE")
     GEMINI_API_KEY: Optional[str] = Field(default=None, alias="GEMINI_API_KEY")
+    GEMINI_MODEL: str = Field(default="gemini-3.6-flash", alias="GEMINI_MODEL")
     
     model_config = ConfigDict(
-        env_file=".env",
+        env_file=BACKEND_DIR / ".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore",

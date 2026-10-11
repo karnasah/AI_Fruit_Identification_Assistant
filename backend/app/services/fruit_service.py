@@ -13,6 +13,7 @@ from app.models.fruit import Fruit
 from app.models.favorite import Favorite
 from app.models.identification import Identification
 from app.schemas.fruit import FruitCreate, FruitUpdate
+from app.utils.fruit_labels import clean_fruit_label
 from app.utils.logger import logger
 
 
@@ -220,6 +221,12 @@ class FruitService:
         fruit_id: Optional[int] = None,
     ) -> Identification:
         """Save identification to history"""
+        fruit_name = clean_fruit_label(fruit_name)
+        top_predictions = [
+            {**prediction, "name": clean_fruit_label(prediction["name"])}
+            for prediction in (top_predictions or [])
+        ]
+
         # Try to find fruit by name
         if not fruit_id:
             fruit = await self.get_fruit_by_name(fruit_name)
@@ -232,7 +239,7 @@ class FruitService:
             fruit_name=fruit_name,
             confidence=confidence,
             image_path=image_path,
-            top_predictions=top_predictions or [],
+            top_predictions=top_predictions,
             ripeness=ripeness,
             created_at=datetime.utcnow(),
         )
